@@ -53,6 +53,7 @@ public class Reader extends JFrame {
 				Start.start();
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(null, "¬ведите в поле число");
+					e1.printStackTrace();
 					}
 			}
 		}

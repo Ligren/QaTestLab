@@ -6,7 +6,7 @@ import java.util.Arrays;
 public interface Shape {
 	void draw();
 	int getSpace();
-	String getColor();
+	Color getColor();
 	}
 
 class Square implements Shape {
@@ -20,12 +20,13 @@ class Square implements Shape {
 		
 		@Override
 		public String toString() {
-			return "Фигура: квадрат, площадь " + getSpace() + " кв. ед., длина сторон(ы): " +  Arrays.toString(getSide()) + " ед., цвет (R, G, B) : " + getColor() + ".";
+			return "Фигура: квадрат, площадь " + getSpace() + " кв. ед., длина сторон(ы): " +  Arrays.toString(getSide()) + 
+					" ед., цвет (R, G, B) : " + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ".";
 		}
 
 		@Override
 		public void draw() {
-			new SquareDrawing(color, side, this);
+			new SquareDrawing(this);
 		}
 
 		@Override
@@ -34,8 +35,8 @@ class Square implements Shape {
 		}
 
 		@Override
-		public String getColor() {
-			return "" + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() ;
+		public Color getColor() {
+			return color;
 		} 
 		
 		int[] getSide() {
@@ -48,7 +49,7 @@ class Square implements Shape {
 class Triangle implements Shape {
 		int side1, side2;
 		double side3;
-		Color color;
+		public Color color;
 		
 		public Triangle(Color color, int side1, int side2, double side3) {
 			this.side1 = side1;
@@ -76,12 +77,13 @@ class Triangle implements Shape {
 		}
 
 		@Override
-		public String getColor() {
-			return "" + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() ;
+		public Color getColor() {
+			return color;
 		}
 		
 		public String toString() {
-			return "Фигура: треугольник, площадь " + getSpace() + " кв. ед., длина сторон: " +  Arrays.toString(getSide()) + " ед., цвет (R, G, B) : " + getColor() + ", гипотенуза : " + getHypotenuse();
+			return "Фигура: треугольник, площадь " + getSpace() + " кв. ед., длина сторон: " +  Arrays.toString(getSide()) + 
+					" ед., цвет (R, G, B) : " + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ".";
 		}
 		
 		@Override
@@ -107,7 +109,7 @@ class Circle implements Shape {
 
 	@Override
 	public void draw() {
-		new CircleDrawing(color, radius, this);
+		new CircleDrawing(this);
 	}
 
 	@Override
@@ -116,12 +118,13 @@ class Circle implements Shape {
 	}
 
 	@Override
-	public String getColor() {
-		return "" + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() ;
+	public Color getColor() {
+		return color;
 	} 
 	
 	public String toString() {
-		return "Фигура: круг, площадь " + getSpace() + " кв. ед., радиус: " +  radius + " ед., цвет (R, G, B) : " + getColor() + ".";
+		return "Фигура: круг, площадь " + getSpace() + " кв. ед., радиус: " +  radius + 
+				" ед., цвет (R, G, B) : " + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ".";
 	}
 }
 
@@ -143,7 +146,7 @@ class Trapeze implements Shape {
 		
 	@Override
 	public void draw() {
-		new TrapezeDrawing(color, base1, base2, h, this);
+		new TrapezeDrawing(this);
 	}
 
 	@Override
@@ -152,11 +155,12 @@ class Trapeze implements Shape {
 	}
 
 	@Override
-	public String getColor() {
-		return "" + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() ;
+	public Color getColor() {
+		return color;
 	} 
 	
 	public String toString() {
-		return "Фигура: трапеция, площадь " + getSpace() + " кв. ед., стороны: " +  Arrays.toString(side()) + " ед., цвет (R, G, B) : " + getColor() + ".";
+		return "Фигура: трапеция, площадь " + getSpace() + " кв. ед., стороны: " +  Arrays.toString(side()) + 
+				" ед., цвет (R, G, B) : " + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ".";
 	}
 }

@@ -11,14 +11,14 @@ import java.awt.event.WindowEvent;
 @SuppressWarnings("serial")
 public class ShapeDrawing extends Frame {
 	Color colorThis;
-	Shape shape;
+	Shape shapeThis;
 	static int xLocation;
 	static int yLocation;
 
-	public ShapeDrawing(Color color,Shape shape) {
+	public ShapeDrawing(Shape shape) {
 		super("Shape");
-		this.colorThis = color;
-		this.shape = shape;
+		this.colorThis = shape.getColor();
+		this.shapeThis = shape;
 		prepareGUI();
 	}
 
@@ -40,12 +40,11 @@ public class ShapeDrawing extends Frame {
 @SuppressWarnings("serial")
 class TriangleDrawing extends ShapeDrawing {
 	int side1, side2;
-	Shape thisShape;
 
 	public TriangleDrawing(Color color, int side1, int side2, Shape shape) {
-		super(color, shape);
-		this.side1 = side1; 
-		this.side2 = side2;
+		super(shape);
+		this.side1 = ((Triangle) shapeThis).side1; 
+		this.side2 = ((Triangle) shapeThis).side2;;
 	}
 
 	@Override
@@ -76,7 +75,7 @@ class TriangleDrawing extends ShapeDrawing {
        g.fillPolygon(xPoints, yPoints, 3);
 	   g2.setColor(Color.BLACK);
 	   g.drawPolygon(xPoints, yPoints,3);
-	   g.drawString(shape.toString(), 80, 300);
+	   g.drawString(shapeThis.toString(), 80, 300);
 	   
 	   }
 }
@@ -84,9 +83,9 @@ class TriangleDrawing extends ShapeDrawing {
 @SuppressWarnings("serial")
 class SquareDrawing extends ShapeDrawing {
 	int side;
-	public SquareDrawing(Color color, int side, Shape shape) {
-		super(color, shape);
-		this.side = side;
+	public SquareDrawing(Shape shape) {
+		super(shape);
+		this.side = ((Square) shape).side;
 	}
 
 	@Override
@@ -98,7 +97,7 @@ class SquareDrawing extends ShapeDrawing {
 		g.fillRect(35, 45, 35+side, 45+side);
 		g2.setColor(Color.BLACK);
 		g.drawRect(35, 45, 35+side, 45+side);
-		g.drawString(shape.toString(), 80, 300);
+		g.drawString(shapeThis.toString(), 80, 300);
 	}
 }
 
@@ -106,9 +105,9 @@ class SquareDrawing extends ShapeDrawing {
 class CircleDrawing extends ShapeDrawing {
 	int radius;
 	
-	public CircleDrawing(Color color, int radius, Shape shape) {
-		super(color, shape);
-		this.radius = radius;
+	public CircleDrawing(Shape shape) {
+		super(shape);
+		this.radius = ((Circle) shapeThis).radius;
 	}
 
 	@Override
@@ -120,7 +119,7 @@ class CircleDrawing extends ShapeDrawing {
 		g.fillOval(80, 80, radius*2, radius*2);
 		g2.setColor(Color.BLACK);
 		g.drawOval(80, 80, radius*2, radius*2);
-		g.drawString(shape.toString(), 80, 300);
+		g.drawString(shapeThis.toString(), 80, 300);
 	}
 }
 
@@ -129,11 +128,11 @@ class TrapezeDrawing extends ShapeDrawing {
 	int base1, base2, h;
 
 
-	public TrapezeDrawing(Color colorThis, int base1, int base2, int h, Shape shape) {
-		super(colorThis, shape);
-		this.base1 = base1;
-		this.base2 = base2;
-		this.h = h;
+	public TrapezeDrawing(Shape shape) {
+		super(shape);
+		this.base1 = ((Trapeze) shape).base1;
+		this.base2 = ((Trapeze) shape).base2;
+		this.h = ((Trapeze) shape).h;
 	}
 	
 	@Override
@@ -142,7 +141,7 @@ class TrapezeDrawing extends ShapeDrawing {
 		Font plainFont = new Font("Serif", Font.PLAIN, 24);
 		g2.setFont(plainFont);
 		g2.setColor(colorThis);
-		g.drawString(shape.toString(), 80, 300);
+		g.drawString(shapeThis.toString(), 80, 300);
 		
 		int x1, x2, x3, y1, y2, y3, x4, y4;
 		x1 = 50;
@@ -170,7 +169,7 @@ class TrapezeDrawing extends ShapeDrawing {
 	   g.fillPolygon(xPoints, yPoints, 4);
 	   g2.setColor(Color.BLACK);
 	   g.drawPolygon(xPoints, yPoints, 4);
-	   g.drawString(shape.toString(), 80, 300);
+	   g.drawString(shapeThis.toString(), 80, 300);
 
 	}
 }

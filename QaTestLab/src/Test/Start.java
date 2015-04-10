@@ -33,7 +33,7 @@ public class Start {
 		
 	}
 	
-	public static void start() throws InterruptedException {
+	public static void start() {
 		
 		Shape []array = new Shape[(rand.nextInt(maxAmountOfShapes-1)+1)];
 		
@@ -44,14 +44,12 @@ public class Start {
 		fig.put(4, new TriangleBuilder());
 		
 		for(int i = 0; i < array.length; i++) {
-			array[i] = fig.get(rand.nextInt(fig.size()-1)+1).BuildShape();
+			array[i] = fig.get(rand.nextInt(fig.size())+1).BuildShape();
 		}
 		
 		for(Shape i : array) {
-			Thread.sleep(250);
 			System.out.println(i);
 			i.draw();
 		}
 	}
-
 }
