@@ -45,17 +45,22 @@ public class Reader extends JFrame {
 			if(e.getSource() == b1) {
 				try {
 				Start.maxAmountOfShapes = Integer.parseInt(t1.getText());
+				try {
+					if (Start.maxAmountOfShapes <= 0) throw new WrongNumberException();
+				} catch (WrongNumberException ex) {JOptionPane.showMessageDialog(null, "¬ведите целое положительное число");}
 				ShapeDrawing.xLocation = 0;
 				ShapeDrawing.yLocation = 0;
 				Start.start();
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(null, "¬ведите в поле число");
 					}
-
 			}
 		}
 		
 	}
+}
 
-
+@SuppressWarnings("serial")
+class WrongNumberException extends RuntimeException {
+	
 }
