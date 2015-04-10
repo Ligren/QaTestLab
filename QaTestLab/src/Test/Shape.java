@@ -83,7 +83,7 @@ class Triangle implements Shape {
 		
 		public String toString() {
 			return "Фигура: треугольник, площадь " + getSpace() + " кв. ед., длина сторон: " +  Arrays.toString(getSide()) + 
-					" ед., цвет (R, G, B) : " + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ".";
+					" ед., цвет (R, G, B) : " + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ", гипотенуза: " + getHypotenuse() + "";
 		}
 		
 		@Override
@@ -91,9 +91,7 @@ class Triangle implements Shape {
 			int p = (int) (side1+side2+side3)/2;
 			int s = (int) Math.sqrt((p*(p-side1)*(p-side2)*(p-side3)));
 			return s;
-			
 		}
-		
 }
 
 class Circle implements Shape {
