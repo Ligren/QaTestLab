@@ -13,11 +13,9 @@ import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
 public class Reader extends JFrame {
-	JButton b1, b2;
+	JButton b1;
 	JLabel l1, l2, l3;
-	JTextField t1, t2;
-	int i;
-	String a, b;
+	JTextField t1;
 	eHandler handler = new eHandler();
 
 	public Reader(String s) throws HeadlessException {
